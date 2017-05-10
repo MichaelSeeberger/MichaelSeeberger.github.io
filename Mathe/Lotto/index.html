@@ -1,0 +1,14 @@
+<!doctype html> <html manifest="manifest.appcache"> <head> <meta charset="utf-8"> <title>Lotto</title> <meta name="description" content=""> <meta name="viewport" content="width=device-width"> <!-- Place favicon.ico and apple-touch-icon.png in the root directory --> <link rel="stylesheet" href="styles/main.83669276.css"> </head> <body ng-app="gewinnenApp" ng-controller="MainCtrl"> <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]--> <!-- Add your site or application content here --> <div class="navbar navbar-default" role="navigation"> <div class="container"> <div class="navbar-header"> <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#js-navbar-collapse"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button> <a class="navbar-brand" href="#!/">Gewinnen</a> </div> <div class="collapse navbar-collapse" id="js-navbar-collapse"> <ul class="nav navbar-nav"> <li ng-class="{active : activeView == 'players'}"> <a href="#!/spieler">Spieler</a> </li> <li ng-class="{active : activeView == 'minilotto'}" class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">3 aus 5 <b class="caret"></b></a> <ul class="dropdown-menu"> <li><a href="#!/minilotto">Tipp abgeben</a></li> <li><a href="#!/minilotto/ziehungen">Ziehungen durchführen</a></li> <li><a href="#!/minilotto/grafiken">Grafiken</a></li> </ul> </li> <li ng-class="{active : activeView == 'lotto'}" class="dropdown"> <a class="dropdown-toggle" data-toggle="dropdown">6 aus 42 <b class="caret"></b></a> <ul class="dropdown-menu"> <li><a href="#!/lotto">Tipp abgeben</a></li> <li><a href="#!/lotto/ziehungen">Ziehungen durchführen</a></li> <li><a href="#!/lotto/grafiken">Grafiken</a></li> </ul> </li> </ul> <ul class="nav navbar-nav navbar-right"> <li><a href="#!/einstellungen"><span class="glyphicon glyphicon-cog" bs-tooltip="Einstellungen"></span></a></li> </ul> </div> </div> </div> <!--[if lt IE 9]>
+    <div class="text-danger">
+      Du benutzt einen veralteten Browser! Benutze einen der folgenden Browser, damit die Seite richtig funktioniert:
+      <ul>
+        <li>Internet Explorer 10 oder neuer</li>
+        <li>Firefox</li>
+        <li>Google Chrome</li>
+        <li>Safari</li>
+        <li>Opera</li>
+      </ul>
+    </div>
+    <![endif]--> <div ng-class="activeView == 'einstellungen' || activeView == 'index' ? 'container' : 'container-fluid'" id="main"> <div ng-view=""></div> </div> <script src="scripts/vendor.4560e8f0.js"></script> <script src="scripts/scripts.172fa7ee.js"></script> </body> </html>
