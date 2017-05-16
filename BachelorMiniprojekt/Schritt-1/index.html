@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Umrechner</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="vendor/css/bootstrap.min.css">
+    <link rel="stylesheet" href="styles/custom.css">
+    <script type="text/ng-template" id="views/length.html" src="views/length.html"></script>
+    <script type="text/ng-template" id="views/temperature.html" src="views/temperature.html"></script>
+</head>
+<body ng-app="ConverterApp">
+<div class="container">
+    <div ng-view=""></div>
+</div>
+
+<script src="vendor/js/angular.js"></script>
+<script src="vendor/js/angular-route.js"></script>
+<script src="vendor/js/angular-strap.js"></script>
+<script src="vendor/js/jquery.min.js"></script>
+<script src="vendor/js/bootstrap.min.js"></script>
+
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/TemperatureController.js"></script>
+<script src="scripts/controllers/LengthController.js"></script>
+
+</body>
