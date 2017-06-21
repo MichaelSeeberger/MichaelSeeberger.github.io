@@ -1,0 +1,37 @@
+<h1>Temperatur umrechen</h1>
+<div class="row">
+    <div class="col-sm-3">
+        <div class="list-group">
+            <a href="#!/temperature" class="active list-group-item">Temperatur</a>
+            <a href="#!/length" class="list-group-item">Länge</a>
+        </div>
+    </div>
+    <div class="col-sm-9">
+        <form class="form-inline">
+            <div class="form-group">
+                <div class="input-group">
+                    <input class="form-control" type="number" ng-model="model.input">
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                                aria-expanded="false">{{ model.inputUnit }} <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li ng-repeat="unit in model.availableInputUnits"><a ng-click="model.changeInputUnit(unit)">{{unit}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="input-group">
+                    =
+                </div>
+                <div class="input-group">
+                    <span class="form-control conversionOutput">{{ model.getOutput() }}</span>
+                    <div class="input-group-btn">
+                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ model.outputUnit }} <span class="caret"></span></button>
+                        <ul class="dropdown-menu dropdown-menu-left">
+                            <li ng-repeat="unit in model.availableOutputUnits"><a ng-click="model.changeOutputUnit(unit)">{{unit}}</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
