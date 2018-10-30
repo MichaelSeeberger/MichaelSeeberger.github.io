@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html manifest="./offline.appcache">
+<head>
+  <meta charset="utf-8">
+  <title>Logik</title>
+  <script src="js/jquery.min.js"></script>
+
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+  <script src="js/bootstrap.min.js"></script>
+
+  <link href="css/bootstrap-switch.min.css" rel="stylesheet">
+  <script src="js/bootstrap-switch.min.js"></script>
+
+  <script src="js/main.js"></script>
+  <script src="js/modal.js"></script>
+  <script src="js/parser.js"></script>
+  <script src="js/user_truth_table.js"></script>
+
+  <link href="css/custom.css" rel="stylesheet">
+  <link href="css/tree.css" rel="stylesheet">
+  <script>
+      if ('applicationCache' in window) {
+          // Check if a new cache is available on page load.
+          window.addEventListener('load', function (e) {
+              window.applicationCache.addEventListener('updateready', function (e) {
+                  if (window.applicationCache.status == window.applicationCache.UPDATEREADY) {
+                      // Browser downloaded a new app cache.
+                      try {
+                          window.applicationCache.swapCache()
+                      } catch (err) {
+                      }
+                      // Swap it in and reload the page to get the new hotness.
+                      var reload = confirm('Eine neue Version dieser Seite ist verfügbar. Soll die Seite neu geladen werden?');
+                      if (reload) window.location.reload();
+                  }
+              }, false);
+          }, false);
+      }
+  </script>
+</head>
+<body>
+<div class="modal fade" id="defaultModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" id="defaultModalHeader">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Schliessen">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="defaultModalTitle"></h4>
+      </div>
+      <!-- .modal-header -->
+      <div class="modal-body" id="defaultModalBody">
+      </div>
+      <!-- .modal-body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Schliessen</button>
+        <button type="button" class="btn btn-primary">OK</button>
+      </div>
+    </div>
+    <!-- .modal-content -->
+  </div>
+  <!-- .modal-dialog -->
+</div>
+<div class="modal fade" id="userTruthTableModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" id="userTruthTableModalHeader">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Schliessen">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="userTruthTableModalTitle"></h4>
+      </div>
+      <!-- .modal-header -->
+      <div class="modal-body" id="userTruthTableModalBody">
+        <ul class="nav nav-tabs" role="tablist">
+          <li role="presentation" class="active"><a href="#htmlTruthTable" aria-controls="htmlTruthTable" role="tab" data-toggle="tab">Table</a></li>
+          <li role="presentation"><a href="#latexTruthTable" aria-controls="latexTruthTable" role="tab" data-toggle="tab">LaTeX</a></li>
+        </ul>
+        <div class="tab-content">
+          <div role="tabpanel" class="tab-pane active" id="htmlTruthTable">...</div>
+          <div role="tabpanel" class="tab-pane" id="latexTruthTable">...</div>
+        </div>
+      </div>
+      <!-- .modal-body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Schliessen</button>
+      </div>
+    </div>
+    <!-- .modal-content -->
+  </div>
+  <!-- .modal-dialog -->
+</div>
+<!-- .modal -->
+<div class="modal fade" id="errorModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" id="errorModalHeader">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Schliessen">
+          <span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="errorModalTitle"></h4>
+      </div>
+      <!-- .modal-header -->
+      <div class="modal-body" id="errorModalBody">
+      </div>
+      <!-- .modal-body -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">OK</button>
+      </div>
+    </div>
+    <!-- .modal-content -->
+  </div>
+  <!-- .modal-dialog -->
+</div>
+<!-- .modal -->
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8">
+      <p>
+        <a href="#collapsibleHelp" role="button" class="btn btn-default btn-sm" data-toggle="collapse" aria-expanded="false" aria-controls="collapsibleHelp">Hilfe</a>
+        <a class="btn btn-default btn-sm" href="#showTruthTable" id="showTruthTableButton">Wahrheitstabelle
+          <span id="truthTableState">einblenden</span></a>
+      </p>
+
+      <div class="collapse panel panel-default" id="collapsibleHelp" aria-expanded="false">
+        <table class="table" id="helpTable">
+  <thead>
+    <tr>
+      <th>Befehl</th>
+      <th>Symbol</th>
+      <th>Beschreibung</th>
+      <th class="truthTable"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+  <th>
+        |
+  </th>
+  <td>
+    v
+  </td>
+  <td>Adjunktion (oder; mindestens eines)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-success">W</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        =
+  </th>
+  <td>
+    &equiv;
+  </td>
+  <td>Equivalenz</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        /
+  </th>
+  <td>
+    /
+  </td>
+  <td>Exklusion (oder, höchstens eines)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        &gt;
+  </th>
+  <td>
+    &sup;
+  </td>
+  <td>Implikation (wenn, dann)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        &
+  </th>
+  <td>
+    &
+  </td>
+  <td>Konjunktion (und)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        ^ <span class="normalTH">oder</span> >-<
+  </th>
+  <td>
+    >-<
+  </td>
+  <td>Kontravalention (oder, genau eines, exklusives oder)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        ~
+  </th>
+  <td>
+    ~
+  </td>
+  <td>Negation (nicht)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+  </tbody>
+</table>
+
+      </div>
+    </div>
+  </div>
+  <form class="form-horizontal">
+    <div class="input-group form-group" id="logicInputFormGroup">
+      <input type="text" class="form-control" id="logikInput" placeholder="Aussage...">
+      <span class="input-group-btn">
+        <button type="submit" id="submitLogic" class="btn btn-default">Auswerten</button>
+      </span>
+    </div>
+  </form>
+
+  <div class="row" id="resultContainerRow">
+    <div class="row currentCodeRow">
+      <div class="col-sm-11 col-sm-offset-1">
+        <code id="currentCode"></code>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="alert alert-success col-sm-4 col-sm-offset-4" id="resultContainer">
+        <span id="resultText"><strong>Resultat:</strong> Die Aussage ist <span id="resultAsWords"></span></span>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-3">
+        <div id="variableList">
+        </div>
+        <div>
+          <button class="btn btn-default" id="showUserTruthTableButton">Wahrheitstabelle zeigen...</button>
+        </div>
+      </div>
+      <div class="col-sm-9">
+        <div class="tree" id="treeView">
+          <ul id="topLevelList">
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

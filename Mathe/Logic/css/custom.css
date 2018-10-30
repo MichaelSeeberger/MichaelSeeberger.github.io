@@ -1,0 +1,39 @@
+.container {
+	margin-top: 12px;
+	margin-bottom: 24px;
+}
+
+.modal-body ul {
+	margin-left: 2em;
+}
+
+#resultAsWords {
+	/*text-decoration: underline;*/
+}
+
+.variableSliderContainer {
+	margin-bottom: 7px;
+}
+
+.operator {
+	/*font-weight: bold;*/ /* Not possible for special chars */
+}
+
+.normalTH {
+	font-weight: normal;
+}
+
+.currentCodeRow {
+    margin-bottom: 12px;
+}
+
+.italic {
+	font-style: italic;
+	font-family: "Times New Roman", Times, serif;
+	font-weight: normal;
+	font-size: 12pt;
+}
+
+#latexTruthTable pre {
+	margin-top: 12px;
+}

@@ -1,0 +1,222 @@
+<table class="table" id="helpTable">
+  <thead>
+    <tr>
+      <th>Befehl</th>
+      <th>Symbol</th>
+      <th>Beschreibung</th>
+      <th class="truthTable"></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr>
+  <th>
+        |
+  </th>
+  <td>
+    v
+  </td>
+  <td>Adjunktion (oder; mindestens eines)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-success">W</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        =
+  </th>
+  <td>
+    &equiv;
+  </td>
+  <td>Equivalenz</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        /
+  </th>
+  <td>
+    /
+  </td>
+  <td>Exklusion (oder, höchstens eines)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        &gt;
+  </th>
+  <td>
+    &sup;
+  </td>
+  <td>Implikation (wenn, dann)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        &
+  </th>
+  <td>
+    &
+  </td>
+  <td>Konjunktion (und)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        ^ <span class="normalTH">oder</span> >-<
+  </th>
+  <td>
+    >-<
+  </td>
+  <td>Kontravalention (oder, genau eines, exklusives oder)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+                <th></th>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                    <th>W</th>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+              <tr>
+                    <th>F</th>
+                  <td class="alert-success">W</td>
+                  <td class="alert-danger">F</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+      <tr>
+  <th>
+        ~
+  </th>
+  <td>
+    ~
+  </td>
+  <td>Negation (nicht)</td>
+  <td class="truthTable">
+      <table class="table table-bordered">
+            <thead>
+              <th>W</th>
+              <th>F</th>
+            </thead>
+        <tbody>
+              <tr>
+                  <td class="alert-danger">F</td>
+                  <td class="alert-success">W</td>
+              </tr>
+        </tbody>
+      </table>
+  </td>
+</tr>
+
+  </tbody>
+</table>

@@ -1,0 +1,19 @@
+CACHE MANIFEST
+#version 8608f48
+
+css/bootstrap.min.css
+css/bootstrap-switch.min.css
+css/bootstrap-theme.min.css
+css/custom.css
+css/tree.css
+
+js/bootstrap.min.js
+js/bootstrap-switch.min.js
+js/jquery.min.js
+js/main.js
+js/modal.js
+js/parser.js
+js/user_truth_table.js
+
+NETWORK:
+*
